@@ -1,0 +1,62 @@
+package com.vallamgurubabu;
+
+public class StackUsingLinkedList {
+    public class Node{
+        private int value;
+        public Node next ;
+       public Node(int value){
+            this.value=value;
+            this.next=null;
+        }
+    }
+    private Node top=null;
+    public boolean overflow(){
+        if (top==null){
+            return true;
+        }
+        return false;
+    }
+    public void push(int value){
+        var node = new Node(value);
+        if (top==null)
+          top=node;
+        else {
+            node.next = top;
+            top = node;
+        }
+    }
+    public void pop(){
+        if (overflow()){
+            System.out.println("Stack is Empty");
+        }
+        else {
+            top=top.next;
+        }
+    }
+    public void display(){
+        var current = top;
+        while(current!=null){
+            System.out.println(current.value);
+            current=current.next;
+        }
+    }
+    public int peek(){
+        return top.value;
+    }
+    public int Search(int value){
+
+        var current=top;
+        int index=0;
+        while (current!=null){
+
+            if(current.value==value){
+                return index;
+            }
+            current=current.next;
+            index++;
+
+        }
+        return -1;
+    }
+
+}
