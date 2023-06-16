@@ -1,0 +1,41 @@
+package com.vallamgurubabu;
+
+public class QueuesArray {
+    private int[] items;
+    private int front=-1;
+    private int rear=-1;
+    public  QueuesArray(int length){
+        items=new int[length];
+    }
+    public void underflow(){
+        if (front==-1&&rear==-1){
+            System.out.println("queue is underflow");
+        }
+    }
+    public void enqueue(int value){
+        if (rear==items.length){
+            System.out.println("overflow");
+        }else if (front==-1&&rear==-1){
+            front=0;
+            rear=0;
+            items[rear]=value;
+        } else {
+            rear=rear+1;
+            items[rear]=value;
+        }
+    }
+    public void dequeue(){
+        if (front==-1&&rear==-1){
+            System.out.println("underflow");
+        }else{
+            front=front+1;
+        }
+    }
+    public void display(){
+        for (int i=front;i<=rear;i++){
+            System.out.println(items[i]);
+        }
+    }
+
+
+}
