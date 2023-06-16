@@ -1,0 +1,110 @@
+package com.vallamgurubabu;
+
+public class LinkedList {
+        private class Node{
+            private int value;
+            private Node next;
+            public Node(int value){
+                this.value=value;
+            }
+        }
+        private Node first;
+        private Node last;
+        private int size;
+
+        public void addlast(int item) {
+            var node = new Node(item);
+            if (isEmpty()) {
+                first = last = node;
+            }
+            else {
+                last.next = node;
+                last = node;
+            }
+            size++;
+        }
+
+        public void addfirst(int item) {
+            var node = new Node(item);
+            if (isEmpty()) {
+                first = last = node;
+            }
+            else {
+                first.next = node;
+                first = node;
+            }
+            size++;
+        }
+
+        public int indexof(int item) {
+            int index = 0;
+            var current = first;
+            while (current != null) {
+                if (current.value == item) return index;
+                current = current.next;
+                index++;
+            }
+            return -1;
+        }
+
+        private boolean isEmpty() {
+            return first == null;
+
+        }
+        public void print(){
+            var current=first;
+            while(current!=null){
+                System.out.println(current.value);
+                current=current.next;
+            }
+        }
+      public void removeFirst(){
+            var current=first;//1 2->3
+            var second=current.next;
+            first=second;
+            size--;
+      }
+      public void removelast(){
+
+            var pre=getprevious(last);
+            last=pre;
+            last.next=null;
+            size--;
+      }
+      public Node getprevious(Node node){
+          var current=first;
+          while(current.next!=null){
+              if (current.next==node) {
+                  return current;
+              }
+              current=current.next;  //1->2->3->null
+          }
+          return null;
+      }
+      public int[] toArray(){
+            int array[]=new int[size];
+            var current=first;
+            var index =0 ;
+            while (current!=null){
+                array[index++]=current.value;
+                current=current.next;
+            }
+            return array;
+      }
+
+      public int size(){
+            return size;
+      }
+public int getkthFromTheEnd(int k){
+            var a=first;
+            var b=first;
+            for (int i=0;i<k-1;i++)
+                b=b.next;
+    while (b != null) {
+        a=a.next;
+        b=b.next;
+    }
+    return a.value;
+}
+
+}
