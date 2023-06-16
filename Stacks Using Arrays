@@ -1,0 +1,46 @@
+package com.vallamgurubabu;
+
+public class Stacks {
+    private int [] items;
+    private int top=-1;
+
+    public Stacks(int length){
+        items=new int[length];
+    }
+    public void print(){
+        for (int i=top;i>=0;i--)
+         System.out.println(items[top--]);
+    }
+    public void push(int value){
+        if(isFull()){
+            System.out.println("stack is full");
+        }
+        else {
+            top = top + 1;
+            items[top] = value;
+        }
+    }
+    public void pop(){
+        if (isEmpty()){
+            System.out.println("Stack is empty");
+        }else {
+            top=top-1;
+        }
+    }
+    public boolean isEmpty(){
+        if(top==-1){
+            return true;
+        }
+        return false;
+    }
+    public boolean isFull(){
+        if(top==items.length-1){
+            return true;
+        }
+        return false;
+    }
+    public void peeks(){
+        System.out.println(items[top]);
+    }
+
+}
